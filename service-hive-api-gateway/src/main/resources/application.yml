@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: service-hive-api-gateway
+server:
+  port: 8443
+eureka:
+  instance:
+    hostname: gateway
+  client:
+    serviceUrl:
+      defaultZone: http://devcloud-eureka1:8761/eureka/,http://devcloud-eureka2:8762/eureka/
+zuul:
+  ignored-services: demo-service-provider
+  routes:
+    emp:
+      path: /emp/**
+      service-id: demo-consumer-feign-with-hystrix

@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: service-ops-zipkin-server
+server:
+  port: 8774
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://devcloud-eureka1:8761/eureka/,http://devcloud-eureka2:8762/eureka/
+  instance:
+    preferIpAddress: true

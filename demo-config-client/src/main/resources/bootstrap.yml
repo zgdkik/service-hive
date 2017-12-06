@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: demo-config-client
+  cloud:
+    config:
+      profile: dev
+      label: master
+      discovery:
+        enabled: true
+        serviceId: service-ops-config-server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://devcloud-eureka1:8761/eureka/,http://devcloud-eureka2:8762/eureka/

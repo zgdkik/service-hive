@@ -1,0 +1,17 @@
+server:
+  port: 8775
+spring:
+  application:
+    name: service-ops-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/eacdy/spring-cloud-study/
+          search-paths: config-repo
+          name:
+          password: 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://devcloud-eureka1:8761/eureka/,http://devcloud-eureka2:8762/eureka/

@@ -1,0 +1,25 @@
+java -Xms128m -Xmx512m -jar service-hive-eureka-1.0.0-RELEASE.jar --spring.profiles.active=peer1
+
+java -Xms128m -Xmx512m -jar service-ops-admin-server-1.0.0-RELEASE.jar --server.port=8771
+
+java -Xms128m -Xmx512m -jar service-ops-hystrix-dashboard-1.0.0-RELEASE.jar --server.port=8772
+
+java -Xms128m -Xmx512m -jar service-ops-hystrix-turbine-1.0.0-RELEASE.jar --server.port=8773
+
+java -Xms128m -Xmx512m -jar service-ops-zipkin-server-1.0.0-RELEASE.jar --server.port=8774
+
+java -Xms128m -Xmx512m -jar service-ops-config-server-1.0.0-RELEASE.jar --server.port=8775
+
+java -Xms128m -Xmx512m -jar service-hive-api-gateway-1.0.0-RELEASE.jar --server.port=8443
+
+java -Xms128m -Xmx512m -jar demo-service-provider-1.0.0-RELEASE.jar --server.port=8080
+
+
+--------------------------------------------------------------
+C:\Windows\System32\drivers\etc\hosts
+
+127.0.0.1  devcloud-eureka1
+127.0.0.1  devcloud-eureka2
+
+192.168.3.30  kenly-server
+

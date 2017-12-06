@@ -1,0 +1,16 @@
+spring:
+  application.name: service-ops-hystrix-turbine
+server:
+  port: 8773
+security.basic.enabled: false
+turbine:
+  aggregator:
+    clusterConfig: default
+  appConfig: demo-consumer-feign-with-hystrix-stream,demo-consumer-feign-with-hystrix  ### 配置Eureka中的serviceId列表，表明监控哪些服务
+  clusterNameExpression: new String("default")
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://devcloud-eureka1:8761/eureka/,http://devcloud-eureka2:8762/eureka/
+  instance:
+    preferIpAddress: true
