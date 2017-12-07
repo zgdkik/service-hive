@@ -4,14 +4,14 @@ spring:
 server:
   port: 8443
 eureka:
-  instance:
-    hostname: gateway
   client:
     serviceUrl:
       defaultZone: http://devcloud-eureka1:8761/eureka/,http://devcloud-eureka2:8762/eureka/
+  instance:
+    preferIpAddress: true
 zuul:
   ignored-services: demo-service-provider
   routes:
     emp:
       path: /emp/**
-      service-id: demo-consumer-feign-with-hystrix
+      service-id: demo-consumer-feign
