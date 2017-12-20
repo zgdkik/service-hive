@@ -3,6 +3,9 @@ server:
 spring:
   application:
     name: demo-service-provider
+  zipkin:
+    baseUrl: http://devcloud-eureka1:8774
+  　enabled: true
   jpa:
     generate-ddl: false
     show-sql: true
