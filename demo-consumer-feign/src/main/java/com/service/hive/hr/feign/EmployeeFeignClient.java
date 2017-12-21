@@ -13,6 +13,6 @@ import com.service.hive.hr.entity.Employee;
 @FeignClient(name = "demo-service-provider")
 public interface EmployeeFeignClient {
 
-    @RequestMapping("/{id}")
+    @RequestMapping("/emp/{id}")
     public Employee findByIdFeign(@RequestParam("id") Long id);
 }

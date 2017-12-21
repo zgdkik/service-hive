@@ -17,7 +17,7 @@ import com.service.hive.hr.feign.EmployeeFeignHystrixClient.HystrixClientFallbac
 @FeignClient(name = "demo-service-provider", fallback = HystrixClientFallback.class)
 public interface EmployeeFeignHystrixClient {
 
-    @RequestMapping("/{id}")
+    @RequestMapping("/emp/id}")
     public Employee findByIdFeign(@RequestParam("id") Long id);
 
     /**

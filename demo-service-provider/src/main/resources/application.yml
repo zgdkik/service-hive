@@ -3,6 +3,9 @@ server:
 spring:
   application:
     name: demo-service-provider
+  sleuth:
+    sampler:
+      percentage: 0.5
   zipkin:
     baseUrl: http://devcloud-eureka1:8774
   　enabled: true
