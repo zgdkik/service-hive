@@ -1,4 +1,4 @@
-package com.service.hive.hystrixdashboard;
+package com.service.hive;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
