@@ -31,3 +31,5 @@ eureka:
       defaultZone: http://devcloud-eureka1:8761/eureka/,http://devcloud-eureka2:8762/eureka/
   instance:
     preferIpAddress: true
+    metadata-map:
+      blue-green: blue

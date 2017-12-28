@@ -20,4 +20,9 @@ public class FeignEmployeeController {
         Employee user = this.feignClient.findByIdFeign(id);
         return user;
     }
+
+    @GetMapping("/echo/{something}")
+    public String echo(@PathVariable String something) {
+        return something;
+    }
 }

@@ -4,9 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.service.hive</groupId>
-    <artifactId>service-ops-hystrix-dashboard</artifactId>
+    <artifactId>hystrix-dashboard</artifactId>
     <packaging>jar</packaging>
-    <name>service-ops-hystrix-dashboard</name>
+    <name>hystrix-dashboard</name>
 
     <parent>
         <groupId>com.service.hive</groupId>

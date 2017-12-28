@@ -32,6 +32,11 @@ public class EmployeeController {
         return findOne;
     }
 
+    @GetMapping("/echo/{something}")
+    public String echo(@PathVariable String something) {
+        return something;
+    }
+
     /**
      * 服务实例的信息
      *

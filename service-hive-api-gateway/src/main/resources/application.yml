@@ -10,8 +10,8 @@ eureka:
   instance:
     preferIpAddress: true
 zuul:
-  ignored-services: demo-service-provider
+  ignored-services: demo-consumer-feign
   routes:
-    emp:
-      path: /emp/**
-      service-id: demo-consumer-feign
+    hr:
+      path: /hr/**
+      service-id: demo-service-provider

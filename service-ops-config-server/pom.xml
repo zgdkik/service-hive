@@ -4,9 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.service.hive</groupId>
-    <artifactId>service-ops-config-server</artifactId>
+    <artifactId>config-server</artifactId>
     <packaging>jar</packaging>
-    <name>service-ops-config-server</name>
+    <name>config-server</name>
 
     <parent>
         <groupId>com.service.hive</groupId>

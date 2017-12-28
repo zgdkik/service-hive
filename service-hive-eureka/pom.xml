@@ -4,9 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.service.hive</groupId>
-    <artifactId>service-hive-eureka</artifactId>
+    <artifactId>eureka-server</artifactId>
     <packaging>jar</packaging>
-    <name>service-hive-eureka</name>
+    <name>eureka server</name>
 
     <parent>
         <groupId>com.service.hive</groupId>
