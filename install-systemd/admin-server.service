@@ -1,0 +1,18 @@
+# Systemd unit file for default admin-server
+# To create clones of this service:
+# DO NOTHING, use admin-server service instead.
+
+# /usr/lib/systemd/system/admin-server.service
+
+[Unit]
+Description=service hive admin-server
+After=syslog.target
+
+[Service]
+Type=simple
+PIDFile=/var/service-hive/admin-server.pid
+ExecStart=/usr/bin/java -Xms128m -Xmx512m -jar /var/service-hive/admin-server.jar
+ExecStop=/usr/bin/sh pidof admin-server.service | xargs kill -s 9
+
+[Install]
+WantedBy=multi-user.target

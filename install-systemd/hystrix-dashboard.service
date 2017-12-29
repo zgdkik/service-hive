@@ -1,0 +1,18 @@
+# Systemd unit file for default hystrix-dashboard
+# To create clones of this service:
+# DO NOTHING, use hystrix-dashboard service instead.
+
+# /usr/lib/systemd/system/hystrix-dashboard.service
+
+[Unit]
+Description=service hive hystrix-dashboard
+After=syslog.target
+
+[Service]
+Type=simple
+PIDFile=/var/service-hive/hystrix-dashboard.pid
+ExecStart=/usr/bin/java -Xms128m -Xmx512m -jar /var/service-hive/hystrix-dashboard.jar
+ExecStop=/usr/bin/sh pidof hystrix-dashboard.service | xargs kill -s 9
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,18 @@
+# Systemd unit file for default eureka
+# To create clones of this service:
+# DO NOTHING, use eureka service instead.
+
+# /usr/lib/systemd/system/eureka1.service
+
+[Unit]
+Description=service hive eureka1
+After=syslog.target
+
+[Service]
+Type=simple
+PIDFile=/var/service-hive/eureka1.pid
+ExecStart=/usr/bin/java -Xms128m -Xmx512m -jar /var/service-hive/eureka-server.jar --spring.profiles.active=peer1
+ExecStop=/usr/bin/sh pidof eureka1.service | xargs kill -s 9
+
+[Install]
+WantedBy=multi-user.target

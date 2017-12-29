@@ -1,0 +1,18 @@
+# Systemd unit file for default zipkin-server
+# To create clones of this service:
+# DO NOTHING, use zipkin-server service instead.
+
+# /usr/lib/systemd/system/zipkin-server.service
+
+[Unit]
+Description=service hive zipkin-server
+After=syslog.target
+
+[Service]
+Type=simple
+PIDFile=/var/service-hive/zipkin-server.pid
+ExecStart=/usr/bin/java -Xms128m -Xmx512m -jar /var/service-hive/zipkin-server.jar
+ExecStop=/usr/bin/sh pidof zipkin-server.service | xargs kill -s 9
+
+[Install]
+WantedBy=multi-user.target

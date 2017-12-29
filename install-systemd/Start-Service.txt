@@ -1,0 +1,33 @@
+
+------------------------------------------------------------
+systemctl start eureka1
+systemctl status eureka1
+systemctl enable eureka1
+
+systemctl start eureka2
+systemctl status eureka2
+systemctl enable eureka2
+
+systemctl start admin-server
+systemctl status admin-server
+systemctl enable admin-server
+
+systemctl start hystrix-dashboard
+systemctl status hystrix-dashboard
+systemctl enable hystrix-dashboard
+
+systemctl stop hystrix-dashboard
+
+systemctl start zipkin-server
+systemctl status zipkin-server
+systemctl enable zipkin-server
+
+------------------------------------------------------------
+
+eureka   http://192.168.3.100:8761/
+
+admin-server  http://192.168.3.100:8771
+
+hystrix-dashboard   http://192.168.3.100:8772/hystrix
+
+zipkin-server   http://192.168.3.37:8774/zipkin/
