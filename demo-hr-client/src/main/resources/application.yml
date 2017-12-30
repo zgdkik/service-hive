@@ -1,0 +1,20 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: demo-hr-client
+  sleuth:
+    sampler:
+      percentage: 0.5
+  zipkin:
+    baseUrl: http://eureka-server1:8774
+    enabled: true
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server1:8761/eureka/,http://eureka-server2:8762/eureka/
+  instance:
+    preferIpAddress: true
+ribbon:
+  eureka:
+    enabled: true

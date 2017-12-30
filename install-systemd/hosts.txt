@@ -1,6 +1,6 @@
 C:\Windows\System32\drivers\etc\hosts
 /etc/hosts
 
-127.0.0.1  devcloud-eureka1
-127.0.0.1  devcloud-eureka2
+127.0.0.1  eureka-server1
+127.0.0.1  eureka-server2
 

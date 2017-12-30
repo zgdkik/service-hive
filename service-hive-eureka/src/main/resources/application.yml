@@ -18,7 +18,7 @@ eureka:
     fetch-registry: true
     region: cn-east-1
     serviceUrl:
-      defaultZone: http://devcloud-eureka2:8762/eureka/
+      defaultZone: http://eureka-server2:8762/eureka/
 ---
 spring:
   profiles: peer2
@@ -34,4 +34,4 @@ eureka:
     fetch-registry: true
     region: cn-east-1
     serviceUrl:
-      defaultZone: http://devcloud-eureka1:8761/eureka/
+      defaultZone: http://eureka-server1:8761/eureka/

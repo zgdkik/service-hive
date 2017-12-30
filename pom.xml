@@ -18,9 +18,9 @@
 		<module>service-ops-admin-server</module>
         <module>service-hive-parent</module>
         <module>service-hive-commons</module>
-        <module>demo-service-provider</module>
-        <module>demo-consumer-feign</module>
-        <module>demo-consumer-feign-with-hystrix-stream</module>
+        <module>demo-hr-service</module>
+        <module>demo-hr-client</module>
+        <module>demo-hr-client-with-hystrix</module>
         <module>demo-config-client</module>
 
     </modules>

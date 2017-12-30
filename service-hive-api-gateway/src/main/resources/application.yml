@@ -6,12 +6,18 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://devcloud-eureka1:8761/eureka/,http://devcloud-eureka2:8762/eureka/
+      defaultZone: http://eureka-server1:8761/eureka/,http://eureka-server2:8762/eureka/
   instance:
     preferIpAddress: true
 zuul:
-  ignored-services: demo-consumer-feign
+  ignored-services: service-hive-eureka,service-ops-admin-server,service-ops-zipkin-server,service-ops-hystrix-dashboard
   routes:
-    hr:
+    hr-service:
       path: /hr/**
-      service-id: demo-service-provider
+      service-id: demo-hr-service
+    hr-client:
+      path: /client/**
+      service-id: demo-hr-client
+    hr-client-hystrix:
+      path: /hystrix/**
+      service-id: demo-hr-client-with-hystrix

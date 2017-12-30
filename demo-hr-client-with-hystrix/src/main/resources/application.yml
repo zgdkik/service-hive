@@ -1,0 +1,20 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: demo-hr-client-with-hystrix
+  sleuth:
+    sampler:
+      percentage: 0.5
+  zipkin:
+    baseUrl: http://eureka-server1:8774
+    enabled: true
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server1:8761/eureka/,http://eureka-server2:8762/eureka/
+  instance:
+    preferIpAddress: true
+ribbon:
+  eureka:
+    enabled: true

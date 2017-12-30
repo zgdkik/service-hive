@@ -16,11 +16,33 @@ systemctl start hystrix-dashboard
 systemctl status hystrix-dashboard
 systemctl enable hystrix-dashboard
 
-systemctl stop hystrix-dashboard
-
 systemctl start zipkin-server
 systemctl status zipkin-server
 systemctl enable zipkin-server
+
+systemctl start demo-hr-service
+systemctl status demo-hr-service
+systemctl enable demo-hr-service
+
+systemctl start demo-hr-client
+systemctl status demo-hr-client
+systemctl enable demo-hr-client
+
+systemctl start demo-hr-client-with-hystrix
+systemctl status demo-hr-client-with-hystrix
+systemctl enable demo-hr-client-with-hystrix
+
+------------------------------------------------------------
+
+systemctl stop eureka1
+systemctl stop eureka2
+systemctl stop admin-server
+systemctl stop hystrix-dashboard
+systemctl stop zipkin-server
+
+systemctl stop demo-hr-service
+systemctl stop demo-hr-client
+systemctl stop demo-hr-client-with-hystrix
 
 ------------------------------------------------------------
 

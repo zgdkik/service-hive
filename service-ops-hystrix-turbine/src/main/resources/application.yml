@@ -11,6 +11,6 @@ turbine:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://devcloud-eureka1:8761/eureka/,http://devcloud-eureka2:8762/eureka/
+      defaultZone: http://eureka-server1:8761/eureka/,http://eureka-server2:8762/eureka/
   instance:
     preferIpAddress: true
