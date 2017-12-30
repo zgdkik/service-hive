@@ -4,9 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.service.hive</groupId>
-    <artifactId>demo-hr-client-with-hystrix</artifactId>
+    <artifactId>demo-hr-client-with-feign-hystrix</artifactId>
     <packaging>jar</packaging>
-    <name>demo-hr-client-with-hystrix</name>
+    <name>demo-hr-client-with-feign-hystrix</name>
 
     <parent>
         <groupId>com.service.hive</groupId>

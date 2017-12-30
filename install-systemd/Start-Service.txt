@@ -28,10 +28,6 @@ systemctl start demo-hr-client
 systemctl status demo-hr-client
 systemctl enable demo-hr-client
 
-systemctl start demo-hr-client-with-hystrix
-systemctl status demo-hr-client-with-hystrix
-systemctl enable demo-hr-client-with-hystrix
-
 ------------------------------------------------------------
 
 systemctl stop eureka1
@@ -42,7 +38,6 @@ systemctl stop zipkin-server
 
 systemctl stop demo-hr-service
 systemctl stop demo-hr-client
-systemctl stop demo-hr-client-with-hystrix
 
 ------------------------------------------------------------
 

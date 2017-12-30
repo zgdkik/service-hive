@@ -20,7 +20,8 @@
         <module>service-hive-commons</module>
         <module>demo-hr-service</module>
         <module>demo-hr-client</module>
-        <module>demo-hr-client-with-hystrix</module>
+        <module>demo-hr-client-with-feign-hystrix</module>
+        <module>demo-hr-client-with-ribbon-hystrix</module>
         <module>demo-config-client</module>
 
     </modules>
