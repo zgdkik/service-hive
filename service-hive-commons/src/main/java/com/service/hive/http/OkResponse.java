@@ -12,6 +12,16 @@ public class OkResponse {
 
     private ResponseEntity<Object> response;
 
+    private OkResponse(OkResponseBuilder builder) {
+        this.setStatus("success");
+        this.setResult(builder.getResult());
+        this.setResponse(ResponseEntity.status(builder.getStatus()).body(this));
+    }
+
+    public static OkResponseBuilder status(HttpStatus status) {
+        return new OkResponseBuilder().status(status);
+    }
+
     public String getStatus() {
         return status;
     }
@@ -34,16 +44,6 @@ public class OkResponse {
 
     private void setResponse(ResponseEntity<Object> response) {
         this.response = response;
-    }
-
-    private OkResponse(OkResponseBuilder builder) {
-        this.setStatus("success");
-        this.setResult(builder.getResult());
-        this.setResponse(ResponseEntity.status(builder.getStatus()).body(this));
-    }
-
-    public static OkResponseBuilder status(HttpStatus status) {
-        return new OkResponseBuilder().status(status);
     }
 
     public static class OkResponseBuilder {

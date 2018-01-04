@@ -11,6 +11,18 @@ public class BadResponse {
     private ErrorMessage error;
     private ResponseEntity<Object> response;
 
+    private BadResponse(BadResponseBuilder builder) {
+        this.setStatus("failed");
+        this.setError(new ErrorMessage());
+        this.getError().setCode(builder.getCode());
+        this.getError().setMessge(builder.getMessge());
+        this.setResponse(ResponseEntity.status(builder.getStatus()).body(this));
+    }
+
+    public static BadResponseBuilder status(HttpStatus status) {
+        return new BadResponseBuilder().status(status);
+    }
+
     public String getStatus() {
         return status;
     }
@@ -33,18 +45,6 @@ public class BadResponse {
 
     private void setResponse(ResponseEntity<Object> response) {
         this.response = response;
-    }
-
-    private BadResponse(BadResponseBuilder builder) {
-        this.setStatus("failed");
-        this.setError(new ErrorMessage());
-        this.getError().setCode(builder.getCode());
-        this.getError().setMessge(builder.getMessge());
-        this.setResponse(ResponseEntity.status(builder.getStatus()).body(this));
-    }
-
-    public static BadResponseBuilder status(HttpStatus status) {
-        return new BadResponseBuilder().status(status);
     }
 
     public static class BadResponseBuilder {

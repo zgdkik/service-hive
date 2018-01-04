@@ -11,10 +11,9 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class RibbonHystrixService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(RibbonHystrixService.class);
     @Autowired
     private RestTemplate restTemplate;
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(RibbonHystrixService.class);
 
     @HystrixCommand(fallbackMethod = "fallback")
     public Employee findById(Long id) {

@@ -1,9 +1,8 @@
 package com.service.hive.http;
 
-import org.springframework.http.HttpStatus;
-
 import com.service.hive.http.BadResponse.BadResponseBuilder;
 import com.service.hive.http.OkResponse.OkResponseBuilder;
+import org.springframework.http.HttpStatus;
 
 /**
  * @author kenly

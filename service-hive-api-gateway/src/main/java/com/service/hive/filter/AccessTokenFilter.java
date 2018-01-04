@@ -35,10 +35,10 @@ public class AccessTokenFilter extends ZuulFilter {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
 
-        Object token = request.getParameter("token");
+        Object token = request.getHeaders("token");
 
         //校验token
-        if (token == null) {
+        if (token == null || "".equals(token)) {
             logger.info("token为空，禁止访问!");
             ctx.setSendZuulResponse(false);
             ctx.setResponseStatusCode(401);

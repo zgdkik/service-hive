@@ -30,6 +30,14 @@ systemctl enable demo-hr-client
 
 ------------------------------------------------------------
 
+firewall-cmd --zone=public --add-port=8761-8762/tcp --permanent
+firewall-cmd --zone=public --add-port=8771-8778/tcp --permanent
+firewall-cmd --zone=public --add-port=8080-8088/tcp --permanent
+
+systemctl restart firewalld
+
+------------------------------------------------------------
+
 systemctl stop eureka1
 systemctl stop eureka2
 systemctl stop admin-server

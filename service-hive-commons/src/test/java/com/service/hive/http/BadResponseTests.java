@@ -1,7 +1,6 @@
 package com.service.hive.http;
 
-import static org.junit.Assert.*;
-
+import com.service.hive.http.BadResponse.BadResponseBuilder;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,7 +8,8 @@ import org.junit.runner.RunWith;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import com.service.hive.http.BadResponse.BadResponseBuilder;
+
+import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class BadResponseTests {

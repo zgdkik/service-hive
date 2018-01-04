@@ -1,4 +1,4 @@
-package com.service.hive.backend;
+package com.service.hive.fallback;
 
 import org.springframework.cloud.netflix.zuul.filters.route.ZuulFallbackProvider;
 import org.springframework.http.HttpHeaders;
@@ -20,6 +20,7 @@ public class BackendFallbackProvider implements ZuulFallbackProvider {
 
     /**
      * 所有的路由均使用该降级处理逻辑。
+     *
      * @return
      */
     @Override
@@ -29,6 +30,7 @@ public class BackendFallbackProvider implements ZuulFallbackProvider {
 
     /**
      * 降级处理HTTP响应。
+     *
      * @return
      */
     @Override

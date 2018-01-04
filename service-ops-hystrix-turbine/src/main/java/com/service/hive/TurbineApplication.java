@@ -5,8 +5,6 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.netflix.turbine.EnableTurbine;
 
 /**
- *
- *
  * @author kenly
  */
 @SpringBootApplication

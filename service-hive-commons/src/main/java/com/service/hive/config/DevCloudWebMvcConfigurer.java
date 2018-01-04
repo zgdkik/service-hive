@@ -21,6 +21,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class DevCloudWebMvcConfigurer extends WebMvcConfigurerAdapter {
 
     private static Logger log = LoggerFactory.getLogger(DevCloudWebMvcConfigurer.class);
+    @Autowired
+    DevCloudInterceptorSetting devcloudProperties;
+    @Autowired
+    private TokenHandlerInterceptor tokenInterceptor;
 
     /**
      * 实例化令牌处理拦截器。
@@ -31,12 +35,6 @@ public class DevCloudWebMvcConfigurer extends WebMvcConfigurerAdapter {
     public TokenHandlerInterceptor tokenHandlerInterceptor() {
         return new TokenHandlerInterceptor();
     }
-
-    @Autowired
-    private TokenHandlerInterceptor tokenInterceptor;
-
-    @Autowired
-    DevCloudInterceptorSetting devcloudProperties;
 
     /**
      * 添加需要拦截的URI路径。例如：/PBI/**
