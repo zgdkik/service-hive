@@ -1,7 +1,7 @@
 package com.service.hive.filter;
 
 
-import com.netflix.ribbon.ext.support.RibbonFilterContextHolder;
+import com.service.hive.ribbon.metadata.RequestMetadata;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
@@ -36,11 +36,11 @@ public class BlueGreenZuulFilter extends ZuulFilter {
             HttpServletRequest request = ctx.getRequest();
             Object blueOrGreen = request.getParameter("blue-green");
 
-            RibbonFilterContextHolder.clearCurrentContext();
+            RequestMetadata requestMetadata = RequestMetadata.getCurrent().init();
             if (blueOrGreen != null && blueOrGreen.equals("blue")) {
-                RibbonFilterContextHolder.getCurrentContext().add("blue-green", "blue");
+                requestMetadata.add("blue-green", "blue");
             } else {
-                RibbonFilterContextHolder.getCurrentContext().add("blue-green", "green");
+                requestMetadata.add("blue-green", "green");
             }
 
         } catch (Exception e) {

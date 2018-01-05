@@ -1,7 +1,7 @@
 package com.service.hive;
 
-import com.netflix.ribbon.ext.rule.DiscoveryEnabledRule;
-import com.netflix.ribbon.ext.rule.MetadataAwareRule;
+import com.netflix.loadbalancer.IRule;
+import com.service.hive.ribbon.rule.MetadataAwareRule;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,7 +23,7 @@ public class ZuulApiGatewayApplication {
     @Bean
     @ConditionalOnMissingBean
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    public DiscoveryEnabledRule metadataAwareRule() {
+    public IRule metadataAwareRule() {
         return new MetadataAwareRule();
     }
 }
