@@ -1,0 +1,18 @@
+# Systemd unit file for default api-gateway
+# To create clones of this service:
+# DO NOTHING, use api-gateway service instead.
+
+# /usr/lib/systemd/system/api-gateway.service
+
+[Unit]
+Description=service hive api-gateway
+After=syslog.target
+
+[Service]
+Type=simple
+PIDFile=/var/service-hive/api-gateway.pid
+ExecStart=/usr/bin/java -Xms128m -Xmx512m -jar /var/service-hive/api-gateway.jar
+ExecStop=/usr/bin/sh pidof api-gateway.service | xargs kill -s 9
+
+[Install]
+WantedBy=multi-user.target

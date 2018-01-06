@@ -20,6 +20,10 @@ systemctl start zipkin-server
 systemctl status zipkin-server
 systemctl enable zipkin-server
 
+systemctl start api-gateway
+systemctl status api-gateway
+systemctl enable api-gateway
+
 systemctl start demo-hr-service
 systemctl status demo-hr-service
 systemctl enable demo-hr-service

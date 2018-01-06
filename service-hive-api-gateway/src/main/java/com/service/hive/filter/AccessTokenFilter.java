@@ -27,7 +27,7 @@ public class AccessTokenFilter extends ZuulFilter {
 
     @Override
     public boolean shouldFilter() {
-        return true;
+        return false;
     }
 
     @Override

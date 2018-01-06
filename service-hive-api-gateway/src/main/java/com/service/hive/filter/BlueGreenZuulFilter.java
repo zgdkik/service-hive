@@ -34,7 +34,7 @@ public class BlueGreenZuulFilter extends ZuulFilter {
         try {
             RequestContext ctx = RequestContext.getCurrentContext();
             HttpServletRequest request = ctx.getRequest();
-            Object blueOrGreen = request.getParameter("blue-green");
+            Object blueOrGreen = request.getParameter("env");
 
             RequestMetadata requestMetadata = RequestMetadata.getCurrent().init();
             if (blueOrGreen != null && blueOrGreen.equals("blue")) {

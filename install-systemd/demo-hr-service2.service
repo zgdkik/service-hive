@@ -1,0 +1,18 @@
+# Systemd unit file for default demo-hr-service2
+# To create clones of this service:
+# DO NOTHING, use demo-hr-service2 service instead.
+
+# /usr/lib/systemd/system/demo-hr-service2.service
+
+[Unit]
+Description=service hive demo-hr-service2
+After=syslog.target
+
+[Service]
+Type=simple
+PIDFile=/var/service-hive/demo-hr-service2.pid
+ExecStart=/usr/bin/java -Xms128m -Xmx512m -jar /var/service-hive/demo-hr-service.jar --server.port=8089
+ExecStop=/usr/bin/sh pidof demo-hr-service2.service | xargs kill -s 9
+
+[Install]
+WantedBy=multi-user.target
