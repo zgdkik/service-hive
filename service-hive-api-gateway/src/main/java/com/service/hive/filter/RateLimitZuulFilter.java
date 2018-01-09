@@ -33,7 +33,7 @@ public class RateLimitZuulFilter extends ZuulFilter {
 
     @Override
     public boolean shouldFilter() {
-        return false;
+        return true;
     }
 
     @Override

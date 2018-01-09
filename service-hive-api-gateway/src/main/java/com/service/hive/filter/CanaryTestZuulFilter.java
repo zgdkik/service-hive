@@ -12,7 +12,7 @@ import org.springframework.util.ReflectionUtils;
 import javax.servlet.http.HttpServletRequest;
 
 @Component
-public class BlueGreenZuulFilter extends ZuulFilter {
+public class CanaryTestZuulFilter extends ZuulFilter {
 
     @Override
     public String filterType() {
@@ -37,10 +37,10 @@ public class BlueGreenZuulFilter extends ZuulFilter {
             Object blueOrGreen = request.getParameter("env");
 
             RequestMetadata requestMetadata = RequestMetadata.getCurrent().init();
-            if (blueOrGreen != null && blueOrGreen.equals("blue")) {
-                requestMetadata.add("blue-green", "blue");
+            if (blueOrGreen != null ) {
+                requestMetadata.add("env", "canary");
             } else {
-                requestMetadata.add("blue-green", "green");
+                requestMetadata.add("env", "prod");
             }
 
         } catch (Exception e) {

@@ -12,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 public class RibbonHystrixService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RibbonHystrixService.class);
+
     @Autowired
     private RestTemplate restTemplate;
 
@@ -21,7 +22,6 @@ public class RibbonHystrixService {
     }
 
     public Employee fallback(Long id) {
-        RibbonHystrixService.LOGGER.info("异常发生，进入fallback方法，接收的参数：id = {}", id);
         Employee emp = new Employee();
         emp.setId(-1L);
         emp.setName("default name");
