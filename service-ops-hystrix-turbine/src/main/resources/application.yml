@@ -1,12 +1,12 @@
-spring:
-  application.name: service-ops-hystrix-turbine
 server:
   port: 8773
+management.security.enabled: false
 security.basic.enabled: false
+spring:
+  application.name: service-ops-hystrix-turbine
 turbine:
-  aggregator:
-    clusterConfig: default
-  appConfig: demo-consumer-feign-with-hystrix-stream,demo-consumer-feign-with-hystrix  ### 配置Eureka中的serviceId列表，表明监控哪些服务
+  appConfig: demo-hr-client-with-ribbon-hystrix,demo-hr-client-with-hystrix
+  aggregator.clusterConfig: default
   clusterNameExpression: new String("default")
 eureka:
   client:

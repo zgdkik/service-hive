@@ -1,3 +1,6 @@
+server:
+  port: 8080
+management.security.enabled: false
 spring:
   application:
     name: demo-hr-service
@@ -28,8 +31,6 @@ logging:
 ---
 spring:
   profiles: prod
-server:
-  port: 8080
 eureka:
   client:
     serviceUrl:
@@ -41,8 +42,6 @@ eureka:
 ---
 spring:
   profiles: canary
-server:
-  port: 8080
 eureka:
   client:
     serviceUrl:

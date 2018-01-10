@@ -1,8 +1,9 @@
+server:
+  port: 8772
+management.security.enabled: false
 spring:
   application:
     name: service-ops-hystrix-dashboard
-server:
-  port: 8772
 eureka:
   client:
     serviceUrl:

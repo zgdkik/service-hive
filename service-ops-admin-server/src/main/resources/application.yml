@@ -1,8 +1,9 @@
+server:
+  port: 8771
+management.security.enabled: false
 spring:
   application:
     name: service-ops-admin-server
-server:
-  port: 8771
 eureka:
   client:
     serviceUrl:

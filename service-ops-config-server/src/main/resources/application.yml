@@ -1,5 +1,6 @@
 server:
   port: 8775
+management.security.enabled: false
 spring:
   application:
     name: service-ops-config-server

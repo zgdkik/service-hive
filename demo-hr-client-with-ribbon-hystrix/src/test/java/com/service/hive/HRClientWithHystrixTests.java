@@ -33,7 +33,14 @@ public class HRClientWithHystrixTests {
     @Test
     public void checkApplicationInfoTest() throws Exception {
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/info").contentType(MediaType.ALL)
-                .param("p1", "1").param("p2", "2")
+                .accept(MediaType.ALL);
+
+        mvc.perform(requestBuilder).andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void checkMetricsTest() throws Exception {
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/metrics").contentType(MediaType.ALL)
                 .accept(MediaType.ALL);
 
         mvc.perform(requestBuilder).andExpect(MockMvcResultMatchers.status().isOk());

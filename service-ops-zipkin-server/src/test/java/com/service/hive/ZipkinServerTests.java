@@ -38,4 +38,12 @@ public class ZipkinServerTests {
         mvc.perform(requestBuilder).andExpect(MockMvcResultMatchers.status().isOk());
     }
 
+    @Test
+    public void checkMetricsTest() throws Exception {
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/metrics").contentType(MediaType.ALL)
+                .accept(MediaType.ALL);
+
+        mvc.perform(requestBuilder).andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
 }
