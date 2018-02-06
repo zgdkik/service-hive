@@ -1,0 +1,34 @@
+version: '2'
+
+networks:
+  front-tier:
+    driver: bridge
+  back-tier:
+    driver: bridge
+
+services:
+  eureka-server1:
+    image: service-hive/eureka-server:1.0.0
+    ports:
+      - 8761:8761  
+    networks:
+      - back-tier
+      
+  eureka-server2:
+    image: service-hive/eureka-server:1.0.0
+    ports:
+      - 8761:8761
+    links:
+      - eureka-server1  
+    networks:
+      - back-tier 
+         
+  admin-server:
+    image: service-hive/admin-server:1.0.0
+    ports:
+      - 8771:8771
+    links:
+      - eureka-server1
+      - eureka-server2
+    networks:
+      - back-tier

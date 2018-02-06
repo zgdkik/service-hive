@@ -1,0 +1,45 @@
+
+docker build -t service-hive/eureka-server:1.0.0 .
+
+docker run -d -p 8761:8761 --name=eureka-server1 service-hive/eureka-server:1.0.0
+docker run -d -p 8761:8761 --name=eureka-server2 service-hive/eureka-server:1.0.0
+
+------------------------------------------------------------------
+
+docker build -t service-hive/admin-server:1.0.0 .
+
+docker run -d -p 8771:8771 --name=admin-server -link=eureka-server1 service-hive/admin-server:1.0.0
+
+------------------------------------------------------------------
+
+docker build -t service-hive/api-gateway:1.0.0 .
+
+
+------------------------------------------------------------------
+
+docker build -t service-hive/hystrix-dashboard:1.0.0 .
+
+
+------------------------------------------------------------------
+
+docker build -t service-hive/zipkin-server:1.0.0 .
+
+
+------------------------------------------------------------------
+
+docker build -t service-hive/demo-hr-service:1.0.0 .
+
+
+------------------------------------------------------------------
+
+
+docker build -t service-hive/demo-hr-client-with-ribbon-hystrix:1.0.0 .
+
+
+------------------------------------------------------------------
+
+docker-compose up
+
+docker-compose down
+
+

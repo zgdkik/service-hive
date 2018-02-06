@@ -1,0 +1,18 @@
+java -Xms128m -Xmx512m -jar eureka-server.jar --spring.profiles.active=peer1
+
+java -Xms128m -Xmx512m -jar admin-server.jar --server.port=8771
+
+java -Xms128m -Xmx512m -jar hystrix-dashboard.jar --server.port=8772
+
+java -Xms128m -Xmx512m -jar hystrix-turbine.jar --server.port=8773
+
+java -Xms128m -Xmx512m -jar zipkin-server.jar --server.port=8774
+
+java -Xms128m -Xmx512m -jar config-server.jar --server.port=8775
+
+java -Xms128m -Xmx512m -jar api-gateway.jar --server.port=8443
+
+java -Xms128m -Xmx512m -jar demo-hr-service.jar --spring.profiles.active=canary
+java -Xms128m -Xmx512m -jar demo-hr-service.jar --spring.profiles.active=prod
+
+
