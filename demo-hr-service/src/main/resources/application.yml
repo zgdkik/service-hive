@@ -10,7 +10,7 @@ spring:
     sampler:
       percentage: 0.5
   zipkin:
-    baseUrl: http://eureka-server1:8774,http://eureka-server2:8774
+    baseUrl: http://zipkin-server:8774
   　enabled: true
   jpa:
     generate-ddl: false
