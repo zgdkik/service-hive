@@ -2,7 +2,7 @@
 docker build -t service-hive/eureka-server:1.0.0 .
 
 docker run -d -p 8761:8761 --name=eureka-server1 service-hive/eureka-server:1.0.0
-docker run -d -p 8761:8761 --name=eureka-server2 service-hive/eureka-server:1.0.0
+docker run -d -p 8762:8761 --name=eureka-server2 service-hive/eureka-server:1.0.0
 
 ------------------------------------------------------------------
 
@@ -14,27 +14,32 @@ docker run -d -p 8771:8771 --name=admin-server -link=eureka-server1 service-hive
 
 docker build -t service-hive/api-gateway:1.0.0 .
 
+docker run -d -p 8443:8443 --name=api-gateway -link=eureka-server1 service-hive/api-gateway:1.0.0
 
 ------------------------------------------------------------------
 
 docker build -t service-hive/hystrix-dashboard:1.0.0 .
 
+docker run -d -p 8772:8772 --name=hystrix-dashboard -link=eureka-server1 service-hive/hystrix-dashboard:1.0.0
 
 ------------------------------------------------------------------
 
 docker build -t service-hive/zipkin-server:1.0.0 .
 
+docker run -d -p 8774:8774 --name=zipkin-server -link=eureka-server1 service-hive/zipkin-server:1.0.0
 
 ------------------------------------------------------------------
 
 docker build -t service-hive/demo-hr-service:1.0.0 .
 
+docker run -d -p 8080:8080 --name=demo-hr-service -link=eureka-server1 service-hive/demo-hr-service:1.0.0
 
 ------------------------------------------------------------------
 
 
 docker build -t service-hive/demo-hr-client-with-ribbon-hystrix:1.0.0 .
 
+docker run -d -p 8082:8082 --name=demo-hr-client-with-ribbon-hystrix -link=eureka-server1 service-hive/demo-hr-client-with-ribbon-hystrix:1.0.0
 
 ------------------------------------------------------------------
 

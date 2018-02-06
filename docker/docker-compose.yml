@@ -17,7 +17,7 @@ services:
   eureka-server2:
     image: service-hive/eureka-server:1.0.0
     ports:
-      - 8761:8761
+      - 8762:8761
     links:
       - eureka-server1  
     networks:
@@ -32,3 +32,53 @@ services:
       - eureka-server2
     networks:
       - back-tier
+  
+  hystrix-dashboard:
+    image: service-hive/hystrix-dashboard:1.0.0
+    ports:
+      - 8772:8772
+    links:
+      - eureka-server1
+      - eureka-server2
+    networks:
+      - back-tier
+      
+  zipkin-server:
+    image: service-hive/zipkin-server:1.0.0
+    ports:
+      - 8774:8774
+    links:
+      - eureka-server1
+      - eureka-server2
+    networks:
+      - back-tier 
+      
+  api-gateway:
+    image: service-hive/api-gateway:1.0.0
+    ports:
+      - 8443:8443
+    links:
+      - eureka-server1
+      - eureka-server2
+    networks:
+      - back-tier  
+      
+  demo-hr-service:
+    image: service-hive/demo-hr-service:1.0.0
+    ports:
+      - 8080:8080
+    links:
+      - eureka-server1
+      - eureka-server2
+    networks:
+      - back-tier  
+      
+  demo-hr-client-with-ribbon-hystrix:
+    image: service-hive/demo-hr-client-with-ribbon-hystrix:1.0.0
+    ports:
+      - 8082:8082
+    links:
+      - eureka-server1
+      - eureka-server2
+    networks:
+      - back-tier       
