@@ -3,4 +3,4 @@ VOLUME /tmp
 ADD admin-server.jar app.jar
 RUN bash -c 'touch /app.jar'
 EXPOSE 8771
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","app.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/urandom","-jar","app.jar"]

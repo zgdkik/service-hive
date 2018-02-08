@@ -45,6 +45,8 @@ docker run -d -p 8082:8082 --name=demo-hr-client-with-ribbon-hystrix -link=eurek
 
 docker-compose up
 
+docker-compose scale demo-hr-service=2 demo-hr-client-with-ribbon-hystrix=2
+
 docker-compose down
 
 

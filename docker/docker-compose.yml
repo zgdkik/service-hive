@@ -1,7 +1,7 @@
 version: '2'
 
 networks:
-  front-tier:
+  microservice-tier:
     driver: bridge
   back-tier:
     driver: bridge
@@ -12,16 +12,14 @@ services:
     ports:
       - 8761:8761  
     networks:
-      - back-tier
+      - microservice-tier
       
   eureka-server2:
     image: service-hive/eureka-server:1.0.0
     ports:
       - 8762:8761
-    links:
-      - eureka-server1  
     networks:
-      - back-tier 
+      - microservice-tier
          
   admin-server:
     image: service-hive/admin-server:1.0.0
@@ -31,7 +29,7 @@ services:
       - eureka-server1
       - eureka-server2
     networks:
-      - back-tier
+      - microservice-tier
   
   hystrix-dashboard:
     image: service-hive/hystrix-dashboard:1.0.0
@@ -41,7 +39,7 @@ services:
       - eureka-server1
       - eureka-server2
     networks:
-      - back-tier
+      - microservice-tier
       
   zipkin-server:
     image: service-hive/zipkin-server:1.0.0
@@ -51,7 +49,7 @@ services:
       - eureka-server1
       - eureka-server2
     networks:
-      - back-tier 
+      - microservice-tier
       
   api-gateway:
     image: service-hive/api-gateway:1.0.0
@@ -61,24 +59,24 @@ services:
       - eureka-server1
       - eureka-server2
     networks:
-      - back-tier  
+      - microservice-tier
       
   demo-hr-service:
     image: service-hive/demo-hr-service:1.0.0
     ports:
-      - 8080:8080
+      - 8080
     links:
       - eureka-server1
       - eureka-server2
     networks:
-      - back-tier  
+      - microservice-tier
       
   demo-hr-client-with-ribbon-hystrix:
     image: service-hive/demo-hr-client-with-ribbon-hystrix:1.0.0
     ports:
-      - 8082:8082
+      - 8082
     links:
       - eureka-server1
       - eureka-server2
     networks:
-      - back-tier       
+      - microservice-tier
