@@ -15,7 +15,6 @@
         <module>service-ops-hystrix-turbine</module>
         <module>service-ops-config-server</module>
         <module>service-ops-zipkin-server</module>
-        <module>service-hive-parent</module>
         <module>service-hive-commons</module>
         <module>demo-hr-service</module>
         <module>demo-hr-client</module>
