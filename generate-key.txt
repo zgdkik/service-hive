@@ -1,0 +1,14 @@
+1 产生证书
+keytool -genkey -alias servicehive-ca -dname "CN=servicehive,OU=devcloud,O=2012LAB,L=Shenzhen,ST=Guangdong,C=CN"  -storetype PKCS12 -keyalg RSA -keysize 2048  -keystore servicehive.keystore -validity 3650
+
+2 查看一个keystore:
+keytool -list -v -keystore servicehive.keystore
+
+3 从证书库导出证书
+keytool -export -alias servicehive-ca -keystore servicehive.keystore -rfc -file servicehive.cer
+
+4 证书导入keystore
+keytool -import -alias servicehive-ca -file servicehive.cer -keystore servicehive.keystore
+
+5 查看文件中的证书
+keytool -printcert -file servicehive.cer

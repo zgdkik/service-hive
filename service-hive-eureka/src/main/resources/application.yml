@@ -8,6 +8,10 @@ spring:
   profiles: peer1
 server:
   port: 8761
+  ssl.key-store: classpath:servicehive.keystore
+  ssl.key-store-password: 123456
+  ssl.keyStoreType: PKCS12
+  ssl.keyAlias: servicehive-ca
 management.security.enabled: false
 eureka:
   datacenter: huaweicloud
@@ -19,12 +23,16 @@ eureka:
     fetch-registry: true
     region: cn-east-1
     serviceUrl:
-      defaultZone: http://eureka-server2:8761/eureka/
+      defaultZone: https://eureka-server2:8761/eureka/
 ---
 spring:
   profiles: peer2
 server:
   port: 8761
+  ssl.key-store: classpath:servicehive.keystore
+  ssl.key-store-password: 123456
+  ssl.keyStoreType: PKCS12
+  ssl.keyAlias: servicehive-ca
 management.security.enabled: false
 eureka:
   datacenter: huaweicloud
@@ -36,4 +44,4 @@ eureka:
     fetch-registry: true
     region: cn-east-1
     serviceUrl:
-      defaultZone: http://eureka-server1:8761/eureka/
+      defaultZone: https://eureka-server1:8761/eureka/

@@ -1,4 +1,11 @@
 
+1 构建镜像
+
+docker build -f eureka-server1-dockerfile -t service-hive/eureka-server1:1.0.1 .
+
+docker build -f eureka-server2-dockerfile -t service-hive/eureka-server2:1.0.1 .
+
+
 docker build -f admin-server-dockerfile -t service-hive/admin-server:1.0.0 .
 
 docker build -f api-gateway-dockerfile -t service-hive/api-gateway:1.0.0 .
@@ -7,16 +14,13 @@ docker build -f demo-hr-client-with-ribbon-hystrix-dockerfile -t service-hive/de
 
 docker build -f demo-hr-service-dockerfile -t service-hive/demo-hr-service:1.0.0 .
 
-docker build -f eureka-server1-dockerfile -t service-hive/eureka-server1:1.0.0 .
-
-docker build -f eureka-server2-dockerfile -t service-hive/eureka-server2:1.0.0 .
-
 docker build -f hystrix-dashboard-dockerfile -t service-hive/hystrix-dashboard:1.0.0 .
 
 docker build -f zipkin-server-dockerfile -t service-hive/zipkin-server:1.0.0 .
 
 ------------------------------------------------------------------
 
+2 启动
 docker-compose up
 
 docker-compose scale demo-hr-service=3 demo-hr-client-with-ribbon-hystrix=2
