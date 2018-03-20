@@ -1,5 +1,6 @@
 FROM java
 VOLUME /tmp
+VOLUME /certs
 ADD eureka-server.jar app.jar
 RUN bash -c 'touch /app.jar'
 EXPOSE 8761

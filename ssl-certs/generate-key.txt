@@ -1,0 +1,24 @@
+1 产生自签名根证书CA
+keytool -genkey -alias servicehive-ca -dname "CN=servicehive,OU=devcloud,O=2012LAB,L=Shenzhen,ST=Guangdong,C=CN"  -storetype PKCS12 -keyalg RSA -keysize 2048  -keystore servicehive.jks -validity 3650
+
+2 产生自签名证书，使用根证书CA签名,生成经过认证中心CA认证的证书
+keytool -genkeypair -alias servicehive-server -dname "CN=servicehive-server,OU=devcloud,O=2012LAB,L=Shenzhen,ST=Guangdong,C=CN"  -storetype PKCS12 -keyalg RSA -keysize 2048  -keystore servicehive.jks -validity 3650
+
+keytool -certreq -alias servicehive-server -file servicehive-server.csr -keystore servicehive.jks
+
+keytool -gencert -alias servicehive-ca -infile servicehive-server.csr -outfile servicehive-server.cer -keystore servicehive.jks -validity 3650
+
+2 查看一个keystore:
+keytool -list -v -keystore servicehive.jks
+
+keytool -list -v -keystore servicehive-trust.jks
+
+3 从证书库导出自签名证书
+keytool -export -alias servicehive-ca -keystore servicehive.jks -rfc -file servicehive-ca.cer
+keytool -export -alias servicehive-server -keystore servicehive.jks -rfc -file servicehive-server-self.cer
+
+4 证书导入keystore
+keytool -import -alias servicehive-ca-trust -file servicehive-server.cer -keystore servicehive-trust.jks
+
+5 查看文件中的证书
+keytool -printcert -file servicehive-server.cer
