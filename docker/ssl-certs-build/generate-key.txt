@@ -1,0 +1,31 @@
+1 产生自签名根证书CA
+keytool -genkey -alias servicehive-ca -dname "CN=servicehive,OU=devcloud,O=2012LAB,L=Shenzhen,ST=Guangdong,C=CN"  -storetype PKCS12 -keyalg RSA -keysize 2048  -validity 3650 -keystore servicehive.jks -storepass 123456
+
+2 产生自签名证书，使用根证书CA签名,生成经过认证中心CA认证的证书
+keytool -genkeypair -alias eureka-server -dname "CN=eureka-server,OU=devcloud,O=2012LAB,L=Shenzhen,ST=Guangdong,C=CN"  -storetype PKCS12 -keyalg RSA -keysize 2048  -validity 3650 -keystore servicehive.jks -storepass 123456
+keytool -certreq -alias eureka-server -file eureka-server.csr -keystore servicehive.jks -storepass 123456
+keytool -gencert -alias servicehive-ca -infile eureka-server.csr -outfile eureka-server.cer -validity 3650 -keystore servicehive.jks -storepass 123456 -ext san=dns:eureka-server1,dns:eureka-server2,dns:localhost,ip:127.0.0.1
+
+keytool -genkeypair -alias eureka-client -dname "CN=eureka-client,OU=devcloud,O=2012LAB,L=Shenzhen,ST=Guangdong,C=CN"  -storetype PKCS12 -keyalg RSA -keysize 2048  -validity 3650 -keystore servicehive.jks -storepass 123456
+keytool -certreq -alias eureka-client -file eureka-client.csr -keystore servicehive.jks -storepass 123456
+keytool -gencert -alias servicehive-ca -infile eureka-client.csr -outfile eureka-client.cer -validity 3650 -keystore servicehive.jks -storepass 123456 -ext san=dns:eureka-client,dns:localhost,ip:127.0.0.1
+
+2 查看一个keystore:
+keytool -list -v -keystore servicehive.jks -storepass 123456
+keytool -list -v -keystore jssecacerts -storepass changeit
+
+3 删除keystore中的证书
+keytool -delete -alias eureka-server -keystore jssecacerts -storepass changeit
+keytool -delete -alias eureka-client -keystore jssecacerts -storepass changeit
+
+4 从证书库导出自签名证书
+keytool -export -alias eureka-server -rfc -file eureka-server.cer -keystore servicehive.jks -storepass 123456
+keytool -export -alias eureka-client -rfc -file eureka-client.cer -keystore servicehive.jks -storepass 123456
+
+5 证书导入keystore
+keytool -import -alias eureka-server -file eureka-server.cer -keystore jssecacerts -storepass changeit
+keytool -import -alias eureka-client -file eureka-client.cer -keystore jssecacerts -storepass changeit
+
+6 查看文件中的证书
+keytool -printcert -file eureka-server.cer
+keytool -printcert -file eureka-client.cer

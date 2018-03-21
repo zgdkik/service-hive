@@ -1,6 +1,6 @@
 FROM java
 VOLUME /tmp
-VOLUME /certs
+ADD certs/ ${JAVA_HOME}/lib/security/
 ADD eureka-server.jar app.jar
 RUN bash -c 'touch /app.jar'
 EXPOSE 8761
