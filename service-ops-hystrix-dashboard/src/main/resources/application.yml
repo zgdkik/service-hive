@@ -1,12 +1,19 @@
+spring:
+  application.name: service-ops-hystrix-dashboard
 server:
   port: 8772
-management.security.enabled: false
-spring:
-  application:
-    name: service-ops-hystrix-dashboard
+  ssl.enabled: true
+  ssl.key-store: classpath:servicehive.jks
+  ssl.key-store-password: 123456
+  ssl.key-store-type: PKCS12
+  ssl.keyAlias: eureka-client
+management:
+  security.enabled: false
 eureka:
   client:
-    serviceUrl:
-      defaultZone: http://eureka-server1:8761/eureka/,http://eureka-server2:8761/eureka/
+    serviceUrl.defaultZone: https://eureka-server1:8761/eureka/,https://eureka-server2:8761/eureka/
   instance:
-    preferIpAddress: true
+    prefer-ip-address: true
+    non-secure-port-enabled: false
+    secure-port-enabled: true
+    secure-port: 8772
