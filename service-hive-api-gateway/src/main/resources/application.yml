@@ -1,7 +1,8 @@
 server:
   port: 8443
   ssl.enabled: true
-  ssl.key-store: classpath:servicehive.jks
+  ssl.key-store: /servicehive.jks
+  #ssl.key-store: ./docker/ssl-certs-build/servicehive.jks
   ssl.key-store-password: 123456
   ssl.key-store-type: PKCS12
   ssl.keyAlias: eureka-client
@@ -21,7 +22,7 @@ eureka:
     prefer-ip-address: true
     non-secure-port-enabled: false
     secure-port-enabled: true
-    secure-port: 8443
+    secure-port: ${server.port}
 ribbon.filter.metadata.enabled: true
 zuul:
   ignored-services: '*'
