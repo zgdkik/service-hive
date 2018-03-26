@@ -10,6 +10,8 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+import javax.net.ssl.HttpsURLConnection;
+
 /**
  * @author kenly
  */
@@ -18,6 +20,8 @@ import org.springframework.web.client.RestTemplate;
 @EnableCircuitBreaker
 public class HRClientHystrixApplication {
     public static void main(String[] args) {
+        HttpsURLConnection.setDefaultHostnameVerifier((hostname, sslSession ) -> true);
+
         SpringApplication.run(HRClientHystrixApplication.class, args);
     }
 

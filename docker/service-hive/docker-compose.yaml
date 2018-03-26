@@ -57,13 +57,20 @@ services:
   demo-hr-service:
     image: service-hive/demo-hr-service:1.0.1
     ports:
-      - 8080
+      - 8080:8080
     networks:
       - microservice-tier
       
+  demo-hr-client-with-feign-hystrix:
+    image: service-hive/demo-hr-client-with-feign-hystrix:1.0.1
+    ports:
+      - 8083:8083
+    networks:
+      - microservice-tier
+
   demo-hr-client-with-ribbon-hystrix:
     image: service-hive/demo-hr-client-with-ribbon-hystrix:1.0.1
     ports:
-      - 8082
+      - 8082:8082
     networks:
       - microservice-tier

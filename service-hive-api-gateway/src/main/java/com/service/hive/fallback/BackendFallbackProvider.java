@@ -70,6 +70,7 @@ public class BackendFallbackProvider implements ZuulFallbackProvider {
              */
             @Override
             public InputStream getBody() throws IOException {
+                System.out.println(FallbackInfo.instance().toString());
                 return new ByteArrayInputStream(FallbackInfo.instance().toString().getBytes());
             }
 

@@ -13,7 +13,10 @@ docker build -f admin-server-dockerfile -t service-hive/admin-server:$IMAGE_VERS
 docker rmi service-hive/api-gateway:$IMAGE_VERSION
 docker build -f api-gateway-dockerfile -t service-hive/api-gateway:$IMAGE_VERSION .
 
-docker rmi service-hive/demo-hr-client-with-ribbon-hystrix:$IMAGE_VERSIO
+docker rmi service-hive/demo-hr-client-with-feign-hystrix:$IMAGE_VERSION
+docker build -f demo-hr-client-with-feign-hystrix-dockerfile -t service-hive/demo-hr-client-with-feign-hystrix:$IMAGE_VERSION .
+
+docker rmi service-hive/demo-hr-client-with-ribbon-hystrix:$IMAGE_VERSION
 docker build -f demo-hr-client-with-ribbon-hystrix-dockerfile -t service-hive/demo-hr-client-with-ribbon-hystrix:$IMAGE_VERSION .
 
 docker rmi service-hive/demo-hr-service:$IMAGE_VERSION

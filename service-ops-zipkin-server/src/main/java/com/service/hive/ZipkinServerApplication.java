@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import zipkin.server.EnableZipkinServer;
 
+import javax.net.ssl.HttpsURLConnection;
+
 /**
  * @author kenly
  */
@@ -13,6 +15,8 @@ import zipkin.server.EnableZipkinServer;
 @EnableZipkinServer
 public class ZipkinServerApplication {
     public static void main(String[] args) {
+        HttpsURLConnection.setDefaultHostnameVerifier((hostname, sslSession ) -> true);
+
         SpringApplication.run(ZipkinServerApplication.class, args);
     }
 }
