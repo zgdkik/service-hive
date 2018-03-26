@@ -2,7 +2,6 @@ server:
   port: 8083
   ssl.enabled: true
   ssl.key-store: /servicehive.jks
-  #ssl.key-store: ./docker/ssl-certs-build/servicehive.jks
   ssl.key-store-password: 123456
   ssl.key-store-type: PKCS12
   ssl.keyAlias: eureka-client
@@ -13,7 +12,7 @@ spring:
   sleuth:
     sampler.percentage: 0.5
   zipkin:
-    baseUrl: http://zipkin-server:8774
+    baseUrl: https://zipkin-server:8774
     enabled: true
 eureka:
   client:
