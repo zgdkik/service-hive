@@ -1,0 +1,430 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "org.springframework.cloud.sleuth.autoconfig.SleuthProperties",
+      "name": "spring.sleuth",
+      "type": "org.springframework.cloud.sleuth.autoconfig.SleuthProperties"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.annotation.SleuthAnnotationProperties",
+      "name": "spring.sleuth.annotation",
+      "type": "org.springframework.cloud.sleuth.annotation.SleuthAnnotationProperties"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys",
+      "name": "spring.sleuth.keys",
+      "type": "org.springframework.cloud.sleuth.TraceKeys"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys",
+      "name": "spring.sleuth.keys.async",
+      "sourceMethod": "getAsync()",
+      "type": "org.springframework.cloud.sleuth.TraceKeys$Async"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys",
+      "name": "spring.sleuth.keys.http",
+      "sourceMethod": "getHttp()",
+      "type": "org.springframework.cloud.sleuth.TraceKeys$Http"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys",
+      "name": "spring.sleuth.keys.hystrix",
+      "sourceMethod": "getHystrix()",
+      "type": "org.springframework.cloud.sleuth.TraceKeys$Hystrix"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys",
+      "name": "spring.sleuth.keys.message",
+      "sourceMethod": "getMessage()",
+      "type": "org.springframework.cloud.sleuth.TraceKeys$Message"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys$Message",
+      "name": "spring.sleuth.keys.message.payload",
+      "sourceMethod": "getPayload()",
+      "type": "org.springframework.cloud.sleuth.TraceKeys$Message$Payload"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys",
+      "name": "spring.sleuth.keys.mvc",
+      "sourceMethod": "getMvc()",
+      "type": "org.springframework.cloud.sleuth.TraceKeys$Mvc"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.log.SleuthSlf4jProperties",
+      "name": "spring.sleuth.log.slf4j",
+      "type": "org.springframework.cloud.sleuth.log.SleuthSlf4jProperties"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.metric.SleuthMetricProperties",
+      "name": "spring.sleuth.metric",
+      "type": "org.springframework.cloud.sleuth.metric.SleuthMetricProperties"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.metric.SleuthMetricProperties",
+      "name": "spring.sleuth.metric.span",
+      "sourceMethod": "getSpan()",
+      "type": "org.springframework.cloud.sleuth.metric.SleuthMetricProperties$Span"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.instrument.rxjava.SleuthRxJavaSchedulersProperties",
+      "name": "spring.sleuth.rxjava.schedulers",
+      "type": "org.springframework.cloud.sleuth.instrument.rxjava.SleuthRxJavaSchedulersProperties"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.instrument.rxjava.SleuthRxJavaSchedulersProperties",
+      "name": "spring.sleuth.rxjava.schedulers.hook",
+      "sourceMethod": "getHook()",
+      "type": "org.springframework.cloud.sleuth.instrument.rxjava.SleuthRxJavaSchedulersProperties$Hook"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.sampler.SamplerProperties",
+      "name": "spring.sleuth.sampler",
+      "type": "org.springframework.cloud.sleuth.sampler.SamplerProperties"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.instrument.scheduling.SleuthSchedulingProperties",
+      "name": "spring.sleuth.scheduled",
+      "type": "org.springframework.cloud.sleuth.instrument.scheduling.SleuthSchedulingProperties"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.instrument.web.SleuthWebProperties",
+      "name": "spring.sleuth.web",
+      "type": "org.springframework.cloud.sleuth.instrument.web.SleuthWebProperties"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.instrument.web.SleuthWebProperties",
+      "name": "spring.sleuth.web.client",
+      "sourceMethod": "getClient()",
+      "type": "org.springframework.cloud.sleuth.instrument.web.SleuthWebProperties$Client"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "org.springframework.cloud.sleuth.annotation.SleuthAnnotationProperties",
+      "defaultValue": true,
+      "name": "spring.sleuth.annotation.enabled",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "defaultValue": true,
+      "name": "spring.sleuth.async.configurer.enabled",
+      "description": "Enable default AsyncConfigurer.",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "defaultValue": true,
+      "name": "spring.sleuth.async.enabled",
+      "description": "Enable instrumenting async related components so that the tracing information is passed between threads.",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.autoconfig.SleuthProperties",
+      "defaultValue": true,
+      "name": "spring.sleuth.enabled",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "defaultValue": true,
+      "name": "spring.sleuth.feign.enabled",
+      "description": "Enable span information propagation when using Feign.",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "defaultValue": true,
+      "name": "spring.sleuth.feign.processor.enabled",
+      "description": "Enable post processor that wraps Feign Context in its tracing representations.",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "defaultValue": true,
+      "name": "spring.sleuth.hystrix.strategy.enabled",
+      "description": "Enable custom HystrixConcurrencyStrategy that wraps all Callable instances into their Sleuth representative - the TraceCallable.",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "defaultValue": true,
+      "name": "spring.sleuth.integration.enabled",
+      "description": "Enable Spring Integration sleuth instrumentation.",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "defaultValue": "*",
+      "name": "spring.sleuth.integration.patterns",
+      "description": "An array of simple patterns against which channel names will be matched. Default is * (all channels). See org.springframework.util.PatternMatchUtils.simpleMatch(String, String).",
+      "type": "java.lang.String[]"
+    },
+    {
+      "defaultValue": true,
+      "name": "spring.sleuth.integration.websockets.enabled",
+      "description": "Enable tracing for WebSockets.",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys$Async",
+      "defaultValue": "class",
+      "name": "spring.sleuth.keys.async.class-name-key",
+      "description": "Simple name of the class with a method annotated with {@code @Async}\n from which the asynchronous process started\n\n @see org.springframework.scheduling.annotation.Async",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys$Async",
+      "defaultValue": "method",
+      "name": "spring.sleuth.keys.async.method-name-key",
+      "description": "Name of the method annotated with {@code @Async}\n\n @see org.springframework.scheduling.annotation.Async",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys$Async",
+      "defaultValue": "",
+      "name": "spring.sleuth.keys.async.prefix",
+      "description": "Prefix for header names if they are added as tags.",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys$Async",
+      "defaultValue": "thread",
+      "name": "spring.sleuth.keys.async.thread-name-key",
+      "description": "Name of the thread that executed the async method\n\n @see org.springframework.scheduling.annotation.Async",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys$Http",
+      "name": "spring.sleuth.keys.http.headers",
+      "description": "Additional headers that should be added as tags if they exist. If the header\n value is multi-valued, the tag value will be a comma-separated, single-quoted\n list.",
+      "type": "java.util.Collection<java.lang.String>"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys$Http",
+      "defaultValue": "http.host",
+      "name": "spring.sleuth.keys.http.host",
+      "description": "The domain portion of the URL or host header. Example:\n \"mybucket.s3.amazonaws.com\". Used to filter by host as opposed to ip address.",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys$Http",
+      "defaultValue": "http.method",
+      "name": "spring.sleuth.keys.http.method",
+      "description": "The HTTP method, or verb, such as \"GET\" or \"POST\". Used to filter against an\n http route.",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys$Http",
+      "defaultValue": "http.path",
+      "name": "spring.sleuth.keys.http.path",
+      "description": "The absolute http path, without any query parameters. Example:\n \"\/objects\/abcd-ff\". Used to filter against an http route, portably with zipkin\n v1. In zipkin v1, only equals filters are supported. Dropping query parameters\n makes the number of distinct URIs less. For example, one can query for the same\n resource, regardless of signing parameters encoded in the query line. This does\n not reduce cardinality to a HTTP single route. For example, it is common to\n express a route as an http URI template like \"\/resource\/{resource_id}\". In\n systems where only equals queries are available, searching for\n {@code http.uri=\/resource} won't match if the actual request was\n \"\/resource\/abcd-ff\". Historical note: This was commonly expressed as \"http.uri\"\n in zipkin, eventhough it was most often just a path.",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys$Http",
+      "defaultValue": "http.",
+      "name": "spring.sleuth.keys.http.prefix",
+      "description": "Prefix for header names if they are added as tags.",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys$Http",
+      "defaultValue": "http.request.size",
+      "name": "spring.sleuth.keys.http.request-size",
+      "description": "The size of the non-empty HTTP request body, in bytes. Ex. \"16384\"\n\n <p>Large uploads can exceed limits or contribute directly to latency.",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys$Http",
+      "defaultValue": "http.response.size",
+      "name": "spring.sleuth.keys.http.response-size",
+      "description": "The size of the non-empty HTTP response body, in bytes. Ex. \"16384\"\n\n <p>Large downloads can exceed limits or contribute directly to latency.",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys$Http",
+      "defaultValue": "http.status_code",
+      "name": "spring.sleuth.keys.http.status-code",
+      "description": "The HTTP response code, when not in 2xx range. Ex. \"503\" Used to filter for\n error status. 2xx range are not logged as success codes are less interesting\n for latency troubleshooting. Omitting saves at least 20 bytes per span.",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys$Http",
+      "defaultValue": "http.url",
+      "name": "spring.sleuth.keys.http.url",
+      "description": "The entire URL, including the scheme, host and query parameters if available.\n Ex.\n \"https:\/\/mybucket.s3.amazonaws.com\/objects\/abcd-ff?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Algorithm=AWS4-HMAC-SHA256...\"\n Combined with {@link #method}, you can understand the fully-qualified\n request line. This is optional as it may include private data or be of\n considerable length.",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys$Hystrix",
+      "defaultValue": "commandGroup",
+      "name": "spring.sleuth.keys.hystrix.command-group",
+      "description": "Name of the command group. Hystrix uses the command group key to group\n together commands such as for reporting, alerting, dashboards,\n or team\/library ownership.\n\n @see com.netflix.hystrix.HystrixCommandGroupKey",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys$Hystrix",
+      "defaultValue": "commandKey",
+      "name": "spring.sleuth.keys.hystrix.command-key",
+      "description": "Name of the command key. Describes the name for the given command.\n A key to represent a {@link com.netflix.hystrix.HystrixCommand} for\n monitoring, circuit-breakers, metrics publishing, caching and other such uses.\n\n @see com.netflix.hystrix.HystrixCommandKey",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys$Hystrix",
+      "defaultValue": "",
+      "name": "spring.sleuth.keys.hystrix.prefix",
+      "description": "Prefix for header names if they are added as tags.",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys$Hystrix",
+      "defaultValue": "threadPoolKey",
+      "name": "spring.sleuth.keys.hystrix.thread-pool-key",
+      "description": "Name of the thread pool key. The thread-pool key represents a {@link com.netflix.hystrix.HystrixThreadPool}\n for monitoring, metrics publishing, caching, and other such uses. A {@link com.netflix.hystrix.HystrixCommand}\n is associated with a single {@link com.netflix.hystrix.HystrixThreadPool} as\n retrieved by the {@link com.netflix.hystrix.HystrixThreadPoolKey} injected into it,\n or it defaults to one created using the {@link com.netflix.hystrix.HystrixCommandGroupKey}\n it is created with.\n\n @see com.netflix.hystrix.HystrixThreadPoolKey",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys$Message",
+      "name": "spring.sleuth.keys.message.headers",
+      "description": "Additional headers that should be added as tags if they exist. If the header\n value is not a String it will be converted to a String using its toString()\n method.",
+      "type": "java.util.Collection<java.lang.String>"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys$Message$Payload",
+      "defaultValue": "message\/payload-size",
+      "name": "spring.sleuth.keys.message.payload.size",
+      "description": "An estimate of the size of the payload if available.",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys$Message$Payload",
+      "defaultValue": "message\/payload-type",
+      "name": "spring.sleuth.keys.message.payload.type",
+      "description": "The type of the payload.",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys$Message",
+      "defaultValue": "message\/",
+      "name": "spring.sleuth.keys.message.prefix",
+      "description": "Prefix for header names if they are added as tags.",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys$Mvc",
+      "defaultValue": "mvc.controller.class",
+      "name": "spring.sleuth.keys.mvc.controller-class",
+      "description": "The lower case, hyphen delimited name of the class that processes the request.\n Ex. class named \"BookController\" will result in \"book-controller\" tag value.",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.TraceKeys$Mvc",
+      "defaultValue": "mvc.controller.method",
+      "name": "spring.sleuth.keys.mvc.controller-method",
+      "description": "The lower case, hyphen delimited name of the class that processes the request.\n Ex. method named \"listOfBooks\" will result in \"list-of-books\" tag value.",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.log.SleuthSlf4jProperties",
+      "defaultValue": true,
+      "name": "spring.sleuth.log.slf4j.enabled",
+      "description": "Enable a {@link Slf4jSpanLogger} that prints tracing information in the logs.",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.log.SleuthSlf4jProperties",
+      "defaultValue": "",
+      "name": "spring.sleuth.log.slf4j.name-skip-pattern",
+      "description": "Name pattern for which span should not be printed in the logs.",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.metric.SleuthMetricProperties",
+      "defaultValue": true,
+      "name": "spring.sleuth.metric.enabled",
+      "description": "Enable calculation of accepted and dropped spans through {@link org.springframework.boot.actuate.metrics.CounterService}",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.metric.SleuthMetricProperties$Span",
+      "defaultValue": "counter.span.accepted",
+      "name": "spring.sleuth.metric.span.accepted-name",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.metric.SleuthMetricProperties$Span",
+      "defaultValue": "counter.span.dropped",
+      "name": "spring.sleuth.metric.span.dropped-name",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.instrument.rxjava.SleuthRxJavaSchedulersProperties$Hook",
+      "defaultValue": true,
+      "name": "spring.sleuth.rxjava.schedulers.hook.enabled",
+      "description": "Enable support for RxJava via RxJavaSchedulersHook.",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.instrument.rxjava.SleuthRxJavaSchedulersProperties",
+      "defaultValue": [
+        "HystrixMetricPoller",
+        "^RxComputation.*$"
+      ],
+      "name": "spring.sleuth.rxjava.schedulers.ignoredthreads",
+      "description": "Thread names for which spans will not be sampled.",
+      "type": "java.lang.String[]"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.sampler.SamplerProperties",
+      "defaultValue": 0.1,
+      "name": "spring.sleuth.sampler.percentage",
+      "description": "Percentage of requests that should be sampled. E.g. 1.0 - 100% requests should be\n sampled. The precision is whole-numbers only (i.e. there's no support for 0.1% of\n the traces).",
+      "type": "java.lang.Float"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.instrument.scheduling.SleuthSchedulingProperties",
+      "defaultValue": true,
+      "name": "spring.sleuth.scheduled.enabled",
+      "description": "Enable tracing for {@link org.springframework.scheduling.annotation.Scheduled}.",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.instrument.scheduling.SleuthSchedulingProperties",
+      "defaultValue": "",
+      "name": "spring.sleuth.scheduled.skip-pattern",
+      "description": "Pattern for the fully qualified name of a class that should be skipped.",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.autoconfig.SleuthProperties",
+      "defaultValue": false,
+      "name": "spring.sleuth.trace-id128",
+      "description": "When true, generate 128-bit trace IDs instead of 64-bit ones.",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.instrument.web.SleuthWebProperties$Client",
+      "defaultValue": true,
+      "name": "spring.sleuth.web.client.enabled",
+      "description": "Enable interceptor injecting into {@link org.springframework.web.client.RestTemplate}",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.instrument.web.SleuthWebProperties",
+      "defaultValue": true,
+      "name": "spring.sleuth.web.enabled",
+      "description": "When true enables instrumentation for web applications",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "org.springframework.cloud.sleuth.instrument.web.SleuthWebProperties",
+      "defaultValue": "\/api-docs.*|\/autoconfig|\/configprops|\/dump|\/health|\/info|\/metrics.*|\/mappings|\/trace|\/swagger.*|.*\\.png|.*\\.css|.*\\.js|.*\\.html|\/favicon.ico|\/hystrix.stream",
+      "name": "spring.sleuth.web.skip-pattern",
+      "description": "Pattern for URLs that should be skipped in tracing",
+      "type": "java.lang.String"
+    },
+    {
+      "defaultValue": true,
+      "name": "spring.sleuth.zuul.enabled",
+      "description": "Enable span information propagation when using Zuul.",
+      "type": "java.lang.Boolean"
+    }
+  ]
+}

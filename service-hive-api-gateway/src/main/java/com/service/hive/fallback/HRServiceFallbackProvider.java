@@ -15,7 +15,7 @@ import java.nio.charset.Charset;
  * 后端服务异常、连接拒绝、超时或者熔断时的降级处理逻辑。
  */
 //@Component
-public class BackendFallbackProvider implements ZuulFallbackProvider {
+public class HRServiceFallbackProvider implements ZuulFallbackProvider {
 
     /**
      * 所有的路由均使用该降级处理逻辑。
@@ -24,7 +24,7 @@ public class BackendFallbackProvider implements ZuulFallbackProvider {
      */
     @Override
     public String getRoute() {
-        return "*";
+        return "hr";
     }
 
     /**
@@ -69,7 +69,7 @@ public class BackendFallbackProvider implements ZuulFallbackProvider {
              */
             @Override
             public InputStream getBody() throws IOException {
-                System.out.println(FallbackInfo.instance().toString());
+                System.out.println(FallbackInfo.instance("demo-hr-service").toString());
                 return new ByteArrayInputStream(FallbackInfo.instance().toString().getBytes());
             }
 

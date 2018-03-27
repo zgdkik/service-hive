@@ -8,15 +8,29 @@ import org.springframework.http.HttpStatus;
  */
 public class FallbackInfo {
 
+    private String serviceId;
     private HttpStatus status;
     private int code;
     private String message;
+
+    public static FallbackInfo instance(String serviceId) {
+        return instance().serviceId(serviceId);
+    }
 
     public static FallbackInfo instance() {
         return new FallbackInfo()
                 .message("BACKEND SERVICE UNAVAILABLE, PLEASE RETRY LATER. ")
                 .status(HttpStatus.SERVICE_UNAVAILABLE)
                 .code(HttpStatus.SERVICE_UNAVAILABLE.value());
+    }
+
+    public String getServiceId() {
+        return serviceId;
+    }
+
+    public FallbackInfo serviceId(String serviceId) {
+        this.serviceId = serviceId;
+        return this;
     }
 
     public HttpStatus getStatus() {

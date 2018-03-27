@@ -18,10 +18,13 @@ public class RibbonHystrixService {
 
     @HystrixCommand(fallbackMethod = "fallback")
     public Employee findById(Long id) {
-        return this.restTemplate.getForObject("http://demo-hr-service/emp/" + id, Employee.class);
+        return this.restTemplate.getForObject("https://demo-hr-service/emp/" + id, Employee.class);
     }
 
-    public Employee fallback(Long id) {
+    public Employee fallback(Long id,Throwable e) {
+        LOGGER.warn("Call findById(Long id) raised fallback.");
+        e.printStackTrace();
+
         Employee emp = new Employee();
         emp.setId(-1L);
         emp.setName("default name");
