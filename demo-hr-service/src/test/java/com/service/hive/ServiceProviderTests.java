@@ -47,4 +47,12 @@ public class ServiceProviderTests {
         mvc.perform(requestBuilder).andExpect(MockMvcResultMatchers.status().isOk());
     }
 
+    @Test
+    public void findByIdTest() throws Exception {
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/emp/1").contentType(MediaType.ALL)
+                .accept(MediaType.ALL);
+
+        mvc.perform(requestBuilder).andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
 }

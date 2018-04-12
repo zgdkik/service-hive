@@ -9,6 +9,7 @@ management:
   security.enabled: false
 spring:
   application.name: demo-hr-client-with-ribbon-hystrix
+  profiles.active: prod
   sleuth:
     sampler.percentage: 0.5
   zipkin:
@@ -25,3 +26,18 @@ eureka:
 ribbon:
   eureka.enabled: true
   #NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+---
+spring:
+  profiles: prod
+eureka:
+  instance:
+    metadata-map:
+      env: prod
+---
+spring:
+  profiles: canary
+eureka:
+  instance:
+    metadata-map:
+      env: canary

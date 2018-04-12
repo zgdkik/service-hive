@@ -1,9 +1,7 @@
 spring:
   application.name: service-hive-eureka
   profiles.active: peer1
----
-spring:
-  profiles: peer1
+
 server:
   port: 8761
   ssl.enabled: true
@@ -11,8 +9,10 @@ server:
   ssl.key-store-password: 123456
   ssl.key-store-type: PKCS12
   ssl.keyAlias: eureka-server
+
 management:
   security.enabled: false
+
 eureka:
   datacenter: huaweicloud
   environment: dev
@@ -25,29 +25,16 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     region: cn-east-1
+
+---
+spring:
+  profiles: peer1
+eureka:
+  client:
     serviceUrl.defaultZone: https://eureka-server2:8761/eureka/
 ---
 spring:
   profiles: peer2
-server:
-  port: 8761
-  ssl.enabled: true
-  ssl.key-store: /servicehive.jks
-  ssl.key-store-password: 123456
-  ssl.key-store-type: PKCS12
-  ssl.keyAlias: eureka-server
-management:
-  security.enabled: false
 eureka:
-  datacenter: huaweicloud
-  environment: dev
-  instance:
-    prefer-ip-address: true
-    non-secure-port-enabled: false
-    secure-port-enabled: true
-    secure-port: ${server.port}
   client:
-    register-with-eureka: true
-    fetch-registry: true
-    region: cn-east-1
     serviceUrl.defaultZone: https://eureka-server1:8761/eureka/

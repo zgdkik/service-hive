@@ -5,10 +5,13 @@ server:
   ssl.key-store-password: 123456
   ssl.key-store-type: PKCS12
   ssl.keyAlias: eureka-client
+
 management:
   security.enabled: false
+
 spring:
   application.name: demo-hr-service
+  profiles.active: prod
   sleuth:
     sampler.percentage: 0.5
   zipkin:
@@ -23,6 +26,7 @@ spring:
     platform: h2
     schema: classpath:schema.sql
     data: classpath:data.sql
+
 logging:
   level:
     root: INFO
@@ -39,5 +43,18 @@ eureka:
     non-secure-port-enabled: false
     secure-port-enabled: true
     secure-port: ${server.port}
+
+---
+spring:
+  profiles: prod
+eureka:
+  instance:
     metadata-map:
       env: prod
+---
+spring:
+  profiles: canary
+eureka:
+  instance:
+    metadata-map:
+      env: canary

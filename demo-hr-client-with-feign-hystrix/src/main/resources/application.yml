@@ -9,6 +9,7 @@ management:
   security.enabled: false
 spring:
   application.name: demo-hr-client-with-hystrix
+  profiles.active: prod
   sleuth:
     sampler.percentage: 0.5
   zipkin:
@@ -24,3 +25,18 @@ eureka:
     secure-port: ${server.port}
 ribbon:
   eureka.enabled: true
+
+---
+spring:
+  profiles: prod
+eureka:
+  instance:
+    metadata-map:
+      env: prod
+---
+spring:
+  profiles: canary
+eureka:
+  instance:
+    metadata-map:
+      env: canary
