@@ -1,0 +1,24 @@
+version: '2'
+
+networks:
+  microservice-tier:
+    driver: bridge
+  ops-tier:
+    driver: bridge
+
+services:
+  eureka-server1:
+    image: service-hive/eureka-server1:1.0.1
+    ports:
+      - 8761:8761  
+    networks:
+      - microservice-tier
+      - ops-tier
+      
+  eureka-server2:
+    image: service-hive/eureka-server2:1.0.1
+    ports:
+      - 8762:8761
+    networks:
+      - microservice-tier
+      - ops-tier

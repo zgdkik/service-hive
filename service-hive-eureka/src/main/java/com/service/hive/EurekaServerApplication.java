@@ -21,7 +21,7 @@ public class EurekaServerApplication {
 
         //disableSslVerification();
 
-        new SpringApplicationBuilder(EurekaServerApplication.class).web(true).run(args);
+        new SpringApplicationBuilder(EurekaServerApplication.class).run(args);
 
     }
 
