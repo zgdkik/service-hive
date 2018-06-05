@@ -71,6 +71,9 @@
                 <configuration>
                     <imageName>service-hive/eureka-server</imageName>
                     <dockerDirectory>docker</dockerDirectory>
+                    <buildArgs>
+                        <APP_FILE>${project.build.finalName}.jar</APP_FILE>
+                    </buildArgs>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>

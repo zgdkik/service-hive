@@ -5,6 +5,7 @@
 
     <groupId>com.service.hive</groupId>
     <artifactId>admin-server</artifactId>
+    <version>1.0.0-RELEASE</version>
     <packaging>jar</packaging>
     <name>admin-server</name>
 
@@ -68,6 +69,9 @@
                 <configuration>
                     <imageName>service-hive/admin-server</imageName>
                     <dockerDirectory>docker</dockerDirectory>
+                    <buildArgs>
+                        <APP_FILE>${project.build.finalName}.jar</APP_FILE>
+                    </buildArgs>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
