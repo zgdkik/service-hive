@@ -8,7 +8,7 @@ networks:
 
 services:
   eureka-server1:
-    image: service-hive/eureka-server:1.0.1
+    image: service-hive/eureka-server:1.0.0
     environment:
       - ACTIVE_PROFILE=peer1
     ports:
@@ -18,7 +18,7 @@ services:
       - ops-tier
       
   eureka-server2:
-    image: service-hive/eureka-server:1.0.1
+    image: service-hive/eureka-server:1.0.0
     environment:
       - ACTIVE_PROFILE=peer2
     ports:

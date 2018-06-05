@@ -5,7 +5,7 @@
 
     <groupId>com.service.hive</groupId>
     <artifactId>eureka-server</artifactId>
-    <version>1.0.0-RELEASE</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
     <name>eureka server</name>
     <description>eureka-server</description>
@@ -47,17 +47,6 @@
         </dependency>
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/libs-milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <build>
         <plugins>
             <plugin>
@@ -69,7 +58,7 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.1.1</version>
                 <configuration>
-                    <imageName>service-hive/eureka-server</imageName>
+                    <imageName>service-hive/${project.artifactId}</imageName>
                     <dockerDirectory>docker</dockerDirectory>
                     <buildArgs>
                         <APP_FILE>${project.build.finalName}.jar</APP_FILE>
@@ -81,9 +70,9 @@
                             <include>${project.build.finalName}.jar</include>
                         </resource>
                     </resources>
+                    <forceTags>true</forceTags>
                     <imageTags>
                         <imageTag>${project.version}</imageTag>
-                        <imageTag>latest</imageTag>
                     </imageTags>
                 </configuration>
             </plugin>

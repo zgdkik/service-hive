@@ -5,14 +5,34 @@
 
     <groupId>com.service.hive</groupId>
     <artifactId>demo-hr-client-with-ribbon-hystrix</artifactId>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
     <name>demo-hr-client-with-ribbon-hystrix</name>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+    </properties>
+
     <parent>
-        <groupId>com.service.hive</groupId>
-        <artifactId>service-hive</artifactId>
-        <version>1.0.0-RELEASE</version>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.9.RELEASE</version>
+        <relativePath/>
     </parent>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Dalston.SR2</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -45,4 +65,37 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.1.1</version>
+                <configuration>
+                    <imageName>service-hive/${project.artifactId}</imageName>
+                    <dockerDirectory>docker</dockerDirectory>
+                    <buildArgs>
+                        <APP_FILE>${project.build.finalName}.jar</APP_FILE>
+                    </buildArgs>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                    <forceTags>true</forceTags>
+                    <imageTags>
+                        <imageTag>${project.version}</imageTag>
+                    </imageTags>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

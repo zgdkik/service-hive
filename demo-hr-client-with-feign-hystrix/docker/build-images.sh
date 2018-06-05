@@ -1,5 +1,5 @@
 #!/bin/bash
-IMAGE_VERSION=1.0.1
+IMAGE_VERSION=1.0.0
 APP_FILE=demo-hr-client-with-feign-hystrix-1.0.0-RELEASE.jar
 
 docker rmi service-hive/demo-hr-client-with-feign-hystrix:$IMAGE_VERSION

@@ -1,4 +1,5 @@
 FROM java
+MAINTAINER devcloud@huaweicloud.com
 VOLUME /tmp
 ARG APP_FILE=app.jar
 ENV ACTIVE_PROFILE=peer1

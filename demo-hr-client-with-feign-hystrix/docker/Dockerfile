@@ -1,4 +1,5 @@
 FROM java
+MAINTAINER devcloud@huaweicloud.com
 VOLUME /tmp
 ARG APP_FILE=app.jar
 ADD certs/ ${JAVA_HOME}/jre/lib/security/

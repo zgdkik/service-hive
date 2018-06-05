@@ -5,7 +5,7 @@
 
     <groupId>com.service.hive</groupId>
     <artifactId>admin-server</artifactId>
-    <version>1.0.0-RELEASE</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
     <name>admin-server</name>
 
@@ -67,7 +67,7 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.1.1</version>
                 <configuration>
-                    <imageName>service-hive/admin-server</imageName>
+                    <imageName>service-hive/${project.artifactId}</imageName>
                     <dockerDirectory>docker</dockerDirectory>
                     <buildArgs>
                         <APP_FILE>${project.build.finalName}.jar</APP_FILE>
@@ -79,9 +79,9 @@
                             <include>${project.build.finalName}.jar</include>
                         </resource>
                     </resources>
+                    <forceTags>true</forceTags>
                     <imageTags>
                         <imageTag>${project.version}</imageTag>
-                        <imageTag>latest</imageTag>
                     </imageTags>
                 </configuration>
             </plugin>
