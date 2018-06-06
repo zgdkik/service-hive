@@ -14,6 +14,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <image.prefix>service-hive</image.prefix>
+        <image.name>${image.prefix}/${project.artifactId}</image.name>
+        <image.tag>${project.version}</image.tag>
+        <docker.hub.host>registry.docker.io</docker.hub.host>
     </properties>
 
     <parent>
@@ -58,7 +62,10 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.1.1</version>
                 <configuration>
-                    <imageName>service-hive/${project.artifactId}</imageName>
+                    <!--
+                    <dockerHost>http://localhost:2375</dockerHost>
+                    -->
+                    <imageName>${image.name}</imageName>
                     <dockerDirectory>docker</dockerDirectory>
                     <buildArgs>
                         <APP_FILE>${project.build.finalName}.jar</APP_FILE>
@@ -68,13 +75,49 @@
                             <targetPath>/</targetPath>
                             <directory>${project.build.directory}</directory>
                             <include>${project.build.finalName}.jar</include>
+                            <exclude>ignorefile.*</exclude>
                         </resource>
                     </resources>
+                    <!-- optionally overwrite tags every time image is built with docker:build -->
                     <forceTags>true</forceTags>
+                    <rm>true</rm>
                     <imageTags>
-                        <imageTag>${project.version}</imageTag>
+                        <imageTag>${image.tag}</imageTag>
+                        <imageTag>latest</imageTag>
                     </imageTags>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>build-image</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>tag-image</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>tag</goal>
+                        </goals>
+                        <configuration>
+                            <image>${image.name}:${image.tag}</image>
+                            <newName>${docker.hub.host}/${image.name}:${image.tag}
+                            </newName>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>push-image</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>push</goal>
+                        </goals>
+                        <configuration>
+                            <imageName>${docker.hub.host}/${image.name}:${image.tag}
+                            </imageName>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

@@ -1,0 +1,15 @@
+1 You can build an image with the above configurations by running this command.
+
+mvn clean package docker:build
+
+2 To push the image you just built to the registry, specify the pushImage flag.
+
+mvn clean package docker:build -DpushImage
+
+3 To push only specific tags of the image to the registry, specify the pushImageTag flag.
+
+mvn clean package docker:build -DpushImageTag
+
+4 To remove the image named foobar run the following command:
+
+mvn docker:removeImage -DimageName=foobar
