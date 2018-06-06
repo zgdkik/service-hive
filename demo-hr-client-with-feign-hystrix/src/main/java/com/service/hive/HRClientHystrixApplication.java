@@ -17,7 +17,9 @@ import javax.net.ssl.HttpsURLConnection;
 @EnableCircuitBreaker
 public class HRClientHystrixApplication {
     public static void main(String[] args) {
+
         HttpsURLConnection.setDefaultHostnameVerifier((hostname, sslSession ) -> true);
+
         SpringApplication.run(HRClientHystrixApplication.class, args);
     }
 }

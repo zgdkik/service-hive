@@ -1,0 +1,42 @@
+version: '2'
+
+networks:
+  microservice-tier:
+    driver: bridge
+  ops-tier:
+    driver: bridge
+
+services:
+  eureka-server1:
+    image: service-hive/eureka-server:1.0.0
+    environment:
+      - ACTIVE_PROFILE=peer1
+    ports:
+      - 8761:8761  
+    networks:
+      - microservice-tier
+      - ops-tier
+      
+  eureka-server2:
+    image: service-hive/eureka-server:1.0.0
+    environment:
+      - ACTIVE_PROFILE=peer2
+    ports:
+      - 8762:8761
+    networks:
+      - microservice-tier
+      - ops-tier
+
+  demo-hr-service:
+    image: service-hive/demo-hr-service:1.0.0
+    ports:
+      - 8080:8080
+    networks:
+      - microservice-tier
+
+  demo-hr-client:
+    image: service-hive/demo-hr-client:1.0.0
+    ports:
+      - 8081:8081
+    networks:
+      - microservice-tier
