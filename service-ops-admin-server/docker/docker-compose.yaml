@@ -8,7 +8,7 @@ networks:
 
 services:
   eureka-server1:
-    image: service-hive/eureka-server1:1.0.0
+    image: service-hive/eureka-server:1.0.0
     environment:
       - ACTIVE_PROFILE=peer1
     ports:
@@ -18,7 +18,7 @@ services:
       - ops-tier
 
   eureka-server2:
-    image: service-hive/eureka-server2:1.0.0
+    image: service-hive/eureka-server:1.0.0
     environment:
       - ACTIVE_PROFILE=peer2
     ports:
@@ -35,23 +35,9 @@ services:
       - microservice-tier
       - ops-tier
       
-  api-gateway:
-    image: service-hive/api-gateway:1.0.0
-    ports:
-      - 8443:8443
-    networks:
-      - microservice-tier
-      
   demo-hr-service:
     image: service-hive/demo-hr-service:1.0.0
     ports:
       - 8080:8080
-    networks:
-      - microservice-tier
-
-  demo-hr-client-with-ribbon-hystrix:
-    image: service-hive/demo-hr-client-with-ribbon-hystrix:1.0.0
-    ports:
-      - 8082:8082
     networks:
       - microservice-tier
