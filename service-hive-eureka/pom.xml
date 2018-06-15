@@ -64,6 +64,8 @@
                 <configuration>
                     <!--
                     <dockerHost>http://localhost:2375</dockerHost>
+                    <serverId>huawei-swr</serverId>
+                    <registryUrl>registry.huaweicloud.com</registryUrl>
                     -->
                     <imageName>${image.name}</imageName>
                     <dockerDirectory>docker</dockerDirectory>
