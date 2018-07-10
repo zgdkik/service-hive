@@ -1,0 +1,29 @@
+server:
+  port: 8080
+  ssl.enabled: true
+  ssl.key-store: /servicehive.jks
+  ssl.key-store-password: 123456
+  ssl.key-store-type: PKCS12
+  ssl.keyAlias: eureka-client
+
+management:
+  security.enabled: false
+
+spring:
+  application.name: demo-contract-service
+  profiles.active: prod
+
+---
+spring:
+  profiles: prod
+eureka:
+  instance:
+    metadata-map:
+      env: prod
+---
+spring:
+  profiles: canary
+eureka:
+  instance:
+    metadata-map:
+      env: canary
