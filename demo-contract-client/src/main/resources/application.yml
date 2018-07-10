@@ -1,16 +1,14 @@
 server:
-  port: 8080
+  port: 8081
   ssl.enabled: true
   ssl.key-store: /servicehive.jks
   ssl.key-store-password: 123456
   ssl.key-store-type: PKCS12
   ssl.keyAlias: eureka-client
-
 management:
   security.enabled: false
-
 spring:
-  application.name: demo-contract-service
+  application.name: demo-contract-client
   profiles.active: prod
 
 eureka:
@@ -21,6 +19,9 @@ eureka:
     non-secure-port-enabled: false
     secure-port-enabled: true
     secure-port: ${server.port}
+
+ribbon:
+  eureka.enabled: true
 
 ---
 spring:

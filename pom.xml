@@ -15,13 +15,15 @@
         <module>service-ops-hystrix-turbine</module>
         <module>service-ops-config-server</module>
         <module>service-ops-zipkin-server</module>
+        <module>service-ops-admin-server</module>
         <module>service-hive-commons</module>
         <module>demo-hr-service</module>
         <module>demo-hr-client-feign</module>
         <module>demo-hr-client-with-feign-hystrix</module>
         <module>demo-hr-client-with-ribbon-hystrix</module>
+        <module>demo-contract-service</module>
+        <module>demo-contract-client</module>
         <module>demo-config-client</module>
-        <module>service-ops-admin-server</module>
 
     </modules>
 

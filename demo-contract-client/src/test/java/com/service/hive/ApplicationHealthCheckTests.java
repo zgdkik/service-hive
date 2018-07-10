@@ -16,9 +16,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = ContractServiceApplication.class)
+@SpringBootTest(classes = ContractClientApplication.class)
 @WebAppConfiguration
-public class ContractServiceTests {
+public class ApplicationHealthCheckTests {
 
     @Autowired
     private WebApplicationContext context;
@@ -33,7 +33,6 @@ public class ContractServiceTests {
     @Test
     public void checkApplicationInfoTest() throws Exception {
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/info").contentType(MediaType.ALL)
-                .param("p1", "1").param("p2", "2")
                 .accept(MediaType.ALL);
 
         mvc.perform(requestBuilder).andExpect(MockMvcResultMatchers.status().isOk());
@@ -46,6 +45,5 @@ public class ContractServiceTests {
 
         mvc.perform(requestBuilder).andExpect(MockMvcResultMatchers.status().isOk());
     }
-
 
 }
