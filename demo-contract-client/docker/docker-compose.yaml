@@ -27,15 +27,15 @@ services:
       - microservice-tier
       - ops-tier
 
-  demo-hr-service:
-    image: service-hive/demo-hr-service:1.0.0
+  demo-contract-service:
+    image: service-hive/demo-contract-service:1.0.0
     ports:
       - 8080:8080
     networks:
       - microservice-tier
 
-  demo-hr-client:
-    image: service-hive/demo-hr-client:1.0.0
+  demo-contract-client:
+    image: service-hive/demo-contract-client:1.0.0
     ports:
       - 8081:8081
     networks:

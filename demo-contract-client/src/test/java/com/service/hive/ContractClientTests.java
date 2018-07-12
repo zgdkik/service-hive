@@ -1,37 +1,42 @@
 package com.service.hive;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.contract.stubrunner.spring.AutoConfigureStubRunner;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.context.WebApplicationContext;
 
 import static org.junit.Assert.assertTrue;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@AutoConfigureStubRunner(ids = {"com.service.hive:demo-contract-service:+:stubs:8080"}, workOffline = true)
+@AutoConfigureStubRunner(ids = {"com.service.hive:demo-contract-service:+:stubs:8080"}, workOffline=true)
 public class ContractClientTests {
+
+    @Autowired
+    private WebApplicationContext context;
 
     @Autowired
     RestTemplate restTemplate;
 
     @Autowired
-    private MockMvc mockMvc;
+    private MockMvc mvc;
 
-    @Test
-    public void testConsumer() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.post("/consumers/message")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"message\":\"Hello World\"}"))
-                .andExpect(status().isOk());
+    @Before
+    public void setUp() throws Exception {
+        mvc = MockMvcBuilders.webAppContextSetup(context).build();
     }
+
 
     @Test
     public void testFraudcheck() throws Exception {

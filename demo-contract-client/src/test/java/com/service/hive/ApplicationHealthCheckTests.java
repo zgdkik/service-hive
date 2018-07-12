@@ -15,6 +15,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = ContractClientApplication.class)
 @WebAppConfiguration
@@ -44,6 +46,14 @@ public class ApplicationHealthCheckTests {
                 .accept(MediaType.ALL);
 
         mvc.perform(requestBuilder).andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void testFraudcheckAPI() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/emp/1234567890")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"message\":\"Hello World\"}"))
+                .andExpect(status().isOk());
     }
 
 }
