@@ -1,0 +1,8 @@
+FROM frolvlad/alpine-glibc:alpine-3.8
+MAINTAINER <likuan33@126.com>
+
+ADD jre8.tar.gz /usr/java/jdk/
+
+ENV JAVA_HOME /usr/java/jdk
+ENV PATH ${PATH}:${JAVA_HOME}/bin
+WORKDIR /opt
