@@ -19,7 +19,7 @@ import java.security.cert.X509Certificate;
 public class EurekaServerApplication {
     public static void main(String[] args) {
 
-        //disableSslVerification();
+        HttpsURLConnection.setDefaultHostnameVerifier((hostname, sslSession ) -> true);
 
         new SpringApplicationBuilder(EurekaServerApplication.class).run(args);
 
