@@ -1,8 +1,8 @@
 #解压
 tar xvf jre-8u171-linux-x64.tar.gz
-mv jre1.8.0_171 jre8
+mv jre1.8.0_171 jre
 
-cd jre8
+cd jre
 
 #删除文本文件
 rm -rf COPYRIGHT LICENSE README release THIRDPARTYLICENSEREADME-JAVAFX.txt THIRDPARTYLICENSEREADME.txt Welcome.html
@@ -27,4 +27,4 @@ rm -rf     lib/plugin.jar \
 
 #重新打包所有文件
 cd ..
-tar zcvf jre8.tar.gz jre8
+tar zcvf jre.tar.gz jre
